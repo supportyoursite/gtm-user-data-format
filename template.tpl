@@ -31,16 +31,16 @@ ___TEMPLATE_PARAMETERS___
     "macrosInSelect": true,
     "selectItems": [
       {
+        "value": "both",
+        "displayValue": "Both (Email \u0026 Phone E.164)"
+      },
+      {
         "value": "email",
         "displayValue": "Email"
       },
       {
         "value": "phone",
         "displayValue": "Phone E.164"
-      },
-      {
-        "value": "both",
-        "displayValue": "Both (Email \u0026 Phone E.164)"
       }
     ],
     "simpleValueType": true
@@ -323,6 +323,6 @@ scenarios:
 
 ___NOTES___
 
-Created on 2/28/2026, 3:53:05 PM
+Created on 2/28/2026, 8:59:19 PM
 
 
