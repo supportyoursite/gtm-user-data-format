@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-homepage_url: "https://github.com/supportyoursite/gtm-user-data-format"
-documentation_url: "https://github.com/supportyoursite/gtm-user-data-format/blob/main/README.md"
+homepage_url: http://beugadget.com/
+documentation_url: https://github.com/supportyoursite/gtm-user-data-format/blob/main/README.md
 versions:
-  - sha: "a999c83e04a479a95d9b1a1c2abe68c7a8cdfef2"
-    change_notes: "Initial release"
+  - sha: a999c83e04a479a95d9b1a1c2abe68c7a8cdfef2
+    change_notes: Initial release
