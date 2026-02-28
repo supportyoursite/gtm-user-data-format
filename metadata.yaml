@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-homepage_url: http://beugadget.com/
+homepage_url: https://beugadget.com/
 documentation_url: https://github.com/supportyoursite/gtm-user-data-format/blob/main/README.md
 versions:
   # Latest version
-  - sha: a4532e93bf1f208b7939488b7ef0a318479eeff6
-    change_notes: Update type export both object
+  - sha: c45c9dab9a4d4e520e2d153442db56f52c6d9baa
+    change_notes: Update type export both object and change position dropbox
   # Older versions
   - sha: a999c83e04a479a95d9b1a1c2abe68c7a8cdfef2
     change_notes: Initial release
