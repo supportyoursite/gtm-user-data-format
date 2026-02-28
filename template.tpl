@@ -303,7 +303,7 @@ scenarios:
   code: |-
     // Set input to empty
     let mockData = {
-      inputValue: "",
+      emailInput: "",
       formatType: "email"
     };
 
