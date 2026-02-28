@@ -53,7 +53,7 @@ ___TEMPLATE_PARAMETERS___
     "name": "defaultCountryCode",
     "displayName": "Default Country Code (For Phone only)",
     "simpleValueType": true,
-    "defaultValue": 84,
+    "defaultValue": "84",
     "help": "Enter default country code without \u0027+\u0027. Example: 84 for Vietnam, 1 for US.",
     "enablingConditions": [
       {
