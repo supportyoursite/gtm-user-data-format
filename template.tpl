@@ -1,3 +1,80 @@
+﻿___INFO___
+
+{
+  "type": "MACRO",
+  "id": "cvt_temp_public_id",
+  "version": 1,
+  "securityGroups": [],
+  "displayName": "User Data Formatter (Email \u0026 Phone E.164)",
+  "description": "Normalizes raw user input into standardized formats required for Enhanced Conversions. Formats emails (lowercase, trimmed) and phone numbers (E.164 standard with country code).",
+  "containerContexts": [
+    "WEB"
+  ]
+}
+
+
+___TEMPLATE_PARAMETERS___
+
+[
+  {
+    "type": "TEXT",
+    "name": "inputValue",
+    "displayName": "Input Value (String)",
+    "simpleValueType": true,
+    "help": "Click the \u0027+\u0027 icon to select a GTM Variable that contains your raw string value (e.g., {{DLV - Email}} or a DOM Element Variable)."
+  },
+  {
+    "type": "SELECT",
+    "name": "formatType",
+    "displayName": "Type format",
+    "macrosInSelect": true,
+    "selectItems": [
+      {
+        "value": "email",
+        "displayValue": "Email"
+      },
+      {
+        "value": "phone",
+        "displayValue": "Phone E.164"
+      }
+    ],
+    "simpleValueType": true
+  },
+  {
+    "type": "TEXT",
+    "name": "defaultCountryCode",
+    "displayName": "Default Country Code (For Phone only)",
+    "simpleValueType": true,
+    "defaultValue": 84,
+    "help": "Enter default country code without \u0027+\u0027. Example: 84 for Vietnam, 1 for US.",
+    "enablingConditions": [
+      {
+        "paramName": "formatType",
+        "paramValue": "phone",
+        "type": "EQUALS"
+      }
+    ]
+  },
+  {
+    "type": "TEXT",
+    "name": "keepZeroCountryCodes",
+    "displayName": "Keep Zero Country Codes (Comma separated)",
+    "simpleValueType": true,
+    "help": "Enter country codes that retain the leading 0 (e.g., 39, 225, 597). Separate by commas",
+    "enablingConditions": [
+      {
+        "paramName": "formatType",
+        "paramValue": "phone",
+        "type": "EQUALS"
+      }
+    ],
+    "defaultValue": "39, 225, 597, 378, 379"
+  }
+]
+
+
+___SANDBOXED_JS_FOR_WEB_TEMPLATE___
+
 // Import required Google Tag Manager Sandboxed APIs
 const makeString = require('makeString');
 
@@ -162,3 +239,49 @@ if (formatType === 'phone') {
 
 // 4. Final Fallback if nothing matches
 return undefined;
+
+
+___TESTS___
+
+scenarios:
+- name: Format Email - Success
+  code: |-
+    // Set up mock input (mock data)
+    let mockData = {
+      inputValue: "  Join.Kennery@GMAIL.com  ",
+      formatType: "email"
+    };
+
+    // Call template with mock data
+    let result = runCode(mockData);
+
+    // Result:
+    assertThat(result).isEqualTo("join.kennery@gmail.com");
+- name: Format Phone - Local Number
+  code: "let mockData = {\n  inputValue: \"090 123-4567\",\n  formatType: \"phone\"\
+    ,\n  defaultCountryCode: \"84\" \n};\n\nlet result = runCode(mockData);\nassertThat(result).isEqualTo(\"\
+    +84901234567\");"
+- name: Format Phone - Already has Country Code
+  code: "let mockData = {\n  inputValue: \"+84 901 234 567\", \n  formatType: \"phone\"\
+    ,\n  defaultCountryCode: \"84\"\n};\n\nlet result = runCode(mockData);\nassertThat(result).isEqualTo(\"\
+    +84901234567\");"
+- name: Handle Empty/Null Input
+  code: |-
+    // Set input to empty
+    let mockData = {
+      inputValue: "",
+      formatType: "email"
+    };
+
+    // Call template
+    let result = runCode(mockData);
+
+    // Check if the expected result is undefined
+    assertThat(result).isUndefined();
+
+
+___NOTES___
+
+Created on 2/28/2026, 12:27:11 PM
+
+
