@@ -1,5 +1,5 @@
 homepage_url: "https://github.com/supportyoursite/gtm-user-data-format"
 documentation_url: "https://github.com/supportyoursite/gtm-user-data-format/blob/main/README.md"
 versions:
-  - sha: ""
+  - sha: "d2ad6251d77ed4cb17c6002015089030f7396b38"
     change_notes: "Initial release"
